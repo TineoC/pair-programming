@@ -15,15 +15,10 @@ namespace Temp.Facts;
         ToKelvin() : ...
         ToString() : String // "5.4800F" 5.48C -5.48K
 
-        Test Cases:
+    Test Cases:
+    
+    - Fai
 
-        - Pass Cases:
-
-        1. Input: Temperature(10, 0) Output: "responds with Temperature class created".
-
-        2. Input: Temperature(50, 1) Output: "responds with Temperature class created"
-
-        3. Input: Temperature(-3, 2) Output: "responds with Temperature class created"
 */
 
 
@@ -38,5 +33,4 @@ public class ConstructorMessage
     [Test]
     public void With_Valid_Scale_Throws_Nothing([Values] Scale invalidScale)
         => Assert.That(() => new Temperature(32, invalidScale), Throws.Nothing);
-
 }
