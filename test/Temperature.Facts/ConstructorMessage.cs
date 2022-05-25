@@ -1,6 +1,7 @@
 using NUnit.Framework;
-
-namespace Temperature.Facts;
+using System;
+using Temp.Core;
+namespace Temp.Facts;
 
 /*
     Temperature(5.48, TemperatureScale.Kelvin)
@@ -33,13 +34,11 @@ namespace Temperature.Facts;
 
 
 
-public class Tests
+public class ConstructorMessage
 {
     [Test]
-    // With Scale -1 Throws Argument
-    public void WithScaleMinusOneThrowsArgumentOutOfRangeException()
+    public void With_Scale_Minus_One_Throws_ArgumentOutOfRangeException()
     {
-        // With scale -1 throws Argum
-        // Assert.Pass(Temperature(32, -1));
+        Assert.That(() => new Temperature(32, (Scale)(-1)), Throws.InstanceOf<ArgumentOutOfRangeException>());
     }
 }
