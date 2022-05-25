@@ -13,6 +13,8 @@ public class Temperature
         if (!Enum.IsDefined(typeof(Scale), scale))
         {
             throw new ArgumentOutOfRangeException(nameof(scale), scale, "Invalid scale.");
+        } else if (scale == null) {
+            throw new ArgumentNullException(nameof(scale), "Invalid scale.");
         }
 
         Scale = scale;
