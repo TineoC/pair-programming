@@ -19,8 +19,6 @@ namespace Temp.Facts;
 
         - Fail Cases:
 
-        1. Input: Temperature(32, -1) Output: Throw ArgumentOutOfRangeException()
-
         2. Input: Temperature(0.322, 3) Output: Throw Exception("Invalid Scale")
 
         - Pass Cases:
@@ -36,9 +34,13 @@ namespace Temp.Facts;
 
 public class ConstructorMessage
 {
-    [Test]
+    [TestCase(-1)]
+    [TestCase(3)]
     public void With_Scale_Minus_One_Throws_ArgumentOutOfRangeException()
     {
         Assert.That(() => new Temperature(32, (Scale)(-1)), Throws.InstanceOf<ArgumentOutOfRangeException>());
+
+        Assert.That(() => new Temperature(0.322F, (Scale)(3)), Throws.InstanceOf<ArgumentOutOfRangeException>());
     }
+
 }
