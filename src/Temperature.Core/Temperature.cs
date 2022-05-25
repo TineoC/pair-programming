@@ -14,5 +14,9 @@ public class Temperature
         {
             throw new ArgumentOutOfRangeException(nameof(scale), scale, "Invalid scale.");
         }
+
+        Scale = scale;
     }
+
+    public Scale Scale { get; }
 }

@@ -19,15 +19,17 @@ namespace Temp.Facts;
 
     - Pass Cases:
 
-    1. Input:
-    2. Input:  
-    3. Input: 
-
+    1. Input: Celsius returns Celsius
+    2. Input: Fahrenheit returns Fahrenheit
+    3. Input: Kelvin returns Kelvin
 */
-
-
 
 public class ScaleMessage
 {
+    [Test]
+    public void Returns_Same_As_Constructor_Provided_Value([Values] Scale validScale) {
+        Temperature temp = new(1.5F, validScale);
 
+        Assert.That(temp.Scale, Is.EqualTo(validScale));
+    }
 }
