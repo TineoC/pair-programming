@@ -17,10 +17,6 @@ namespace Temp.Facts;
 
         Test Cases:
 
-        - Fail Cases:
-
-        2. Input: Temperature(0.322, 3) Output: Throw Exception("Invalid Scale")
-
         - Pass Cases:
 
         1. Input: Temperature(10, 0) Output: "responds with Temperature class created".
@@ -36,11 +32,11 @@ public class ConstructorMessage
 {
     [TestCase(-1)]
     [TestCase(3)]
-    public void With_Scale_Minus_One_Throws_ArgumentOutOfRangeException()
-    {
-        Assert.That(() => new Temperature(32, (Scale)(-1)), Throws.InstanceOf<ArgumentOutOfRangeException>());
+    public void With_Invalid_Scale_Throws_ArgumentOutOfRangeException(Scale invalidScale)
+        => Assert.That(() => new Temperature(32, invalidScale), Throws.InstanceOf<ArgumentOutOfRangeException>());
 
-        Assert.That(() => new Temperature(0.322F, (Scale)(3)), Throws.InstanceOf<ArgumentOutOfRangeException>());
-    }
+    [Test]
+    public void With_Valid_Scale_Throws_Nothing([Values] Scale invalidScale)
+        => Assert.That(() => new Temperature(32, invalidScale), Throws.Nothing);
 
 }

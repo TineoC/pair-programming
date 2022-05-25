@@ -10,6 +10,8 @@ public class Temperature
     /// <param name="scale"></param>
     public Temperature(float measure, Scale scale)
     {
-        throw new ArgumentOutOfRangeException();
+        if (!Enum.IsDefined(typeof(Scale), scale)) {
+            throw new ArgumentOutOfRangeException(nameof(scale), scale, "Invalid scale.");
+        }
     }
 }
