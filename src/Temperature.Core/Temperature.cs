@@ -1,4 +1,6 @@
-﻿namespace Temp.Core;
+﻿using Triplex.Validations;
+
+namespace Temp.Core;
 
 /// <summary> askfj;lkafj ;lakdsj;ls </summary>
 public class Temperature
@@ -10,15 +12,8 @@ public class Temperature
     /// <param name="scale"></param>
     public Temperature(float measure, Scale scale)
     {
-        if (!Enum.IsDefined(typeof(Scale), scale))
-        {
-            throw new ArgumentOutOfRangeException(nameof(scale), scale, "Invalid scale.");
-        } else if (scale == null) {
-            throw new ArgumentNullException(nameof(scale), "Invalid scale.");
-        }
-
-        Scale = scale;
+        Scale = Arguments.ValidEnumerationMember(scale, nameof(scale));
     }
 
-    public Scale Scale { get; }
+    public Scale? Scale { get; }
 }
